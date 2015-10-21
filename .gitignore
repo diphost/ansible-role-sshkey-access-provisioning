@@ -1,0 +1,6 @@
+*\~
+*.swp
+vars/*
+!vars/main.yml
+!vars/host.example.com.yml.sample
+

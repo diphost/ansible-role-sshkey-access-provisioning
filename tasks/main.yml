@@ -1,0 +1,17 @@
+---
+
+- include_vars: "{{inventory_hostname}}.yml"
+
+- name: detect implementing ssh ecdsa
+  set_fact: ssh_algs="{{ ssh_algs  + ['ecdsa']}}"
+  when: ansible_ssh_host_key_ecdsa_public is defined
+
+- name: detect implementing ssh ed25519
+  set_fact: ssh_algs="{{ ssh_algs  + ['ecdsa']}}"
+  when: ansible_ssh_host_key_ed25519_public is defined
+
+- name: assemble and deploy authorized_keys
+  authorized_key: user="{{ item.name }}" key="{% for alg in item.algs %}{% if alg.name in ssh_algs %}{{ alg.authorized | join('\n') + '\n'}}{% endif %}{% endfor %}" exclusive=yes
+  with_items:
+        - "{{ users }}"
+
