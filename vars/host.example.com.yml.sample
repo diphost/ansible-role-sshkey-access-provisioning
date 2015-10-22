@@ -1,7 +1,7 @@
 ---
 
 users:
-        - name: user001
+        - user: user001
           algs:
                 - name: rsa
                   authorized:
@@ -14,7 +14,7 @@ users:
                         - "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOjvn3LDHqcQ1HcOIXkON+asWbnnLtO4fjPP45KluJ0WINeNk87SoW52jTFO4+T+OIDbicmFV2UFIYwKNi8BheA= alice"
                         - "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJ8uVgyLa0JiQLU2gVqiBbvI3L0elvk/P6Jb3do8PsDGNPAigCawFNDkltGnGQ38RbIrSDkqjNKuQcEMbCLyXvc= ashot"
                         - "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPC7XFulMy1xxnB+K4uB48ZHXmPE0EcN0Q9Hd/TvV7iw5Dl5KkWyAho5/zKW3JXqvBCXHUOvLlogwDwhfWTr9Mw= ivan"
-        - name: user002
+        - user: user002
           algs:
                 - name: rsa
                   authorized:
@@ -23,7 +23,7 @@ users:
                 - name: ecdsa
                   authorized:
                         - "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPC7XFulMy1xxnB+K4uB48ZHXmPE0EcN0Q9Hd/TvV7iw5Dl5KkWyAho5/zKW3JXqvBCXHUOvLlogwDwhfWTr9Mw= ivan"
-        - name: user003
+        - user: user003
           algs:
                 - name: rsa
                   authorized:
