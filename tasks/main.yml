@@ -11,7 +11,7 @@
   when: ansible_ssh_host_key_ed25519_public is defined
 
 - name: assemble and deploy authorized_keys
-  authorized_key: user="{{ item.name }}" key="{% for alg in item.algs %}{% if alg.name in ssh_algs %}{{ alg.authorized | join('\n') + '\n'}}{% endif %}{% endfor %}" exclusive=yes
+  authorized_key: user="{{ item.user }}" key="{% for alg in item.algs %}{% if alg.name in ssh_algs %}{{ alg.authorized | join('\n') + '\n'}}{% endif %}{% endfor %}" exclusive=yes
   with_items:
         - "{{ users }}"
 
