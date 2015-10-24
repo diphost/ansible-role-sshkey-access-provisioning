@@ -1,12 +1,16 @@
 ---
 
-- include_vars: "{{inventory_hostname}}.yml"
+- name: pull host configs from git
+  git: repo="{{ ssh_key_vault_repo }}" dest=vars
 
-- name: detect implementing ssh ecdsa
+- name: include access config
+  include_vars: "host_confs/{{inventory_hostname}}.yml"
+
+- name: detect ssh ecdsa implementation
   set_fact: ssh_algs="{{ ssh_algs  + ['ecdsa']}}"
   when: ansible_ssh_host_key_ecdsa_public is defined
 
-- name: detect implementing ssh ed25519
+- name: detect ssh ed25519 implementation
   set_fact: ssh_algs="{{ ssh_algs  + ['ecdsa']}}"
   when: ansible_ssh_host_key_ed25519_public is defined
 
