@@ -5,14 +5,13 @@
   become: no
   delegate_to: localhost
   run_once: true
-  when: remote_sshkey_vault_repo is defined and local_sshkey_vault_repo is defined
+  when: remote_sshkey_vault_repo is defined
 
 - name: copy host access config to vars/
   copy: src="{{ local_sshkey_vault_repo }}/host_confs/{{inventory_hostname}}.yml" dest="roles/{{ role_name }}/vars/"
   become: no
   delegate_to: localhost
   register: copyconf
-  when: local_sshkey_vault_repo is defined
 
 - name: include access config
   include_vars: "{{inventory_hostname}}.yml"
