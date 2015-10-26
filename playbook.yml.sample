@@ -1,12 +1,10 @@
 ---
 
 - hosts: ssh-access-hosts
-  # for optimizing
-  gather_facts: no
   vars:
         remote_sshkey_vault_repo: git@github.com:user/ssh-keys-vault
         local_sshkey_vault_repo: ~/repos/ssh-keys-vault
   # dirty, but no "ansible_role_name" variable
   roles:
-        - { role: ansible-role-ssh-key-access-provisioning, role_name: "ansible-role-ssh-key-access-provisioning" }
+        - ansible-role-ssh-key-access-provisioning
 
