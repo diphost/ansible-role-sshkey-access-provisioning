@@ -1,6 +1,5 @@
 ---
 
-gather_facts: no
 become: yes
 ssh_algs: 
         - rsa

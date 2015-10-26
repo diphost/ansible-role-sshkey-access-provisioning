@@ -7,26 +7,8 @@
   run_once: true
   when: remote_sshkey_vault_repo is defined
 
-- name: copy host access config to vars/
-  copy: src="{{ local_sshkey_vault_repo }}/host_confs/{{inventory_hostname}}.yml" dest="roles/{{ role_name }}/vars/"
-  become: no
-  delegate_to: localhost
-  register: copyconf
-
 - name: include access config
-  include_vars: "{{inventory_hostname}}.yml"
-  when: copyconf.changed
-
-# for try/except emulation
-- name: "temporary remove roles/{{ role_name }}/vars/{{inventory_hostname}}.yml"
-  file: path="roles/{{ role_name }}/vars/{{ inventory_hostname }}.yml" state=absent
-  delegate_to: localhost
-  become: no
-  when: copyconf.changed
-
-- name: gather facts
-  setup:
-  when: not gather_facts and copyconf.changed
+  include_vars: "{{ local_sshkey_vault_repo }}/host_confs/{{inventory_hostname}}.yml"
 
 - name: detect ssh ecdsa implementation
   set_fact: ssh_algs="{{ ssh_algs  + ['ecdsa']}}"
@@ -40,11 +22,4 @@
   authorized_key: user="{{ item.user }}" key="{% for alg in item.algs %}{% if alg.name in ssh_algs %}{{ alg.authorized | join('\n') + '\n'}}{% endif %}{% endfor %}" exclusive=yes
   with_items:
         - "{{ users }}"
-  when: copyconf.changed
-
-- name: "place back roles/{{ role_name }}/vars/{{ inventory_hostname }}.yml if all ok"
-  copy: src="{{ local_sshkey_vault_repo }}/host_confs/{{inventory_hostname}}.yml" dest="roles/{{ role_name }}/vars/"
-  delegate_to: localhost
-  become: no
-  when: copyconf.changed
 
