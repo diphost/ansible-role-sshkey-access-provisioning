@@ -2,6 +2,7 @@ anlible-role-sshkey-access-provisioning
 =======================================
 
 [Ansible](https://github.com/ansible/ansible) role to assemble and deploy authorized_keys according to the host configuration file
+The configuration file can be generated from a script https://github.com/diphost/sshkeys-vault for example
 
 Features
 --------
