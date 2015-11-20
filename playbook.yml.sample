@@ -6,5 +6,5 @@
         local_sshkey_vault_repo: ~/repos/ssh-keys-vault
   # dirty, but no "ansible_role_name" variable
   roles:
-        - ansible-role-ssh-key-access-provisioning
+        - ansible-role-sshkey-access-provisioning
 
