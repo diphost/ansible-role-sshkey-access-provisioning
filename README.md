@@ -11,6 +11,24 @@ Features
 * Many persons for many users for many hosts
 * Multiple ssh keys for any person
 
+Use
+---
+
+* Create required directory structure
+* ansible-playbook -i hosts playbook.yml
+
+Directory structure
+-------------------
+
+```
+ansible-role-sshkey-access-provisioning/
+\____...                                   # this role
+group_vars/
+\____ ssh-access-hosts                     # group specific vars (python path, ssh user, ...)
+hosts                                      # hosts list
+playbook.yml                               # our playbook
+```
+
 Host configuration sample
 -------------------------
 
