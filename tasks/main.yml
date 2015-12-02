@@ -1,7 +1,7 @@
 ---
 
 - name: pull from remote sshkey vault
-  git: repo="{{ remote_sshkey_vault_repo }}" dest="{{ local_sshkey_vault_repo }}" update=yes
+  git: repo="{{ remote_sshkey_vault_repo }}" dest="{{ local_sshkey_vault_repo }}" update=yes recursive=no
   become: no
   delegate_to: localhost
   run_once: true
